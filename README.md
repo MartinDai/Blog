@@ -1,2 +1,2 @@
 # Martin's Blog
-Welcome to my blog! Please visit https://martindai.github.io/Blog
+Welcome to my blog! Please visit http://martin.doodl6.com
