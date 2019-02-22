@@ -1,2 +1,2 @@
 # Martin's Blog
-Welcome to my blog! Please visit http://martin.doodl6.com
+Welcome to my blog! Please visit https://martin.doodl6.com
