@@ -2,7 +2,7 @@
 
 这个脚本适用于在Unix中把Jetty设置为服务。
 
-##**快速启动Jetty服务**
+## **快速启动Jetty服务**
 
 以下是运行Jetty服务的最短步骤：
 
@@ -27,13 +27,13 @@ Starting Jetty: OK Wed Nov 20 10:26:53 MST 2013
 
 这看起来都很好，但是你使用的是root角色运行的默认配置的Jetty服务。
 
-##**Jetty服务的实用性设置**
+## **Jetty服务的实用性设置**
 
 有多种方式可以实现这一点，这主要取决于你的Unix环境(或者是公司政策)。
 
 这里假设我们使用的是Linux系统（示例版本为Ubuntu 12.04.3 LTS）。
 
-###**准备系统**
+### **准备系统**
 
 ```shell
 # mkdir -p /opt/jetty
@@ -49,7 +49,7 @@ Starting Jetty: OK Wed Nov 20 10:26:53 MST 2013
 
 这里是故意保持和标准的临时文件夹命名`/tmp`不一样的，因为它还兼作servlet的规范工作目录。（这是我们的经验，在长时间运行的Jetty服务器上，标准临时目录通常由各种清理脚本管理）
 
-###**确认你安装了Java 7**
+### **确认你安装了Java 7**
 
 Jetty`${project.version}`运行需要Java 7（或者以上），确保你安装了合适的Java版本。
 
@@ -87,7 +87,7 @@ OpenJDK Runtime Environment (IcedTea 2.3.10) (7u25-2.3.10-1ubuntu0.12.04.2)
 OpenJDK 64-Bit Server VM (build 23.7-b01, mixed mode)
 ```
 
-###**创建用于运行Jetty的用户**
+### **创建用于运行Jetty的用户**
 
 推荐创建一个指定的用户用于运行Jetty，该用户应该拥有运行Jetty的最小设置权限。
 
@@ -97,7 +97,7 @@ OpenJDK 64-Bit Server VM (build 23.7-b01, mixed mode)
 
 这里创建了一个名为`jetty`的用户，并属于名为`jetty`的组，不能访问shell（`/bin/false`），主目录在`/opt/jetty/temp`。
 
-###**下载并解压你的发布版本**
+### **下载并解压你的发布版本**
 
 可以从[Official Eclipse Download Site](http://www.eclipse.org/jetty/documentation/current/quick-start-getting-started.html#jetty-downloading)获取一个发布副本。
 
@@ -114,7 +114,7 @@ jetty-distribution-9.3.1-SNAPSHOT/
 
 已经创建的`/opt/jetty/temp`作为持久的目录当作Jetty的缓存和工作目录。许多Unix系统会定期清理`/tmp`文件夹，这种行为在不是Servlet容器所期望的，而且会导致问题的发生，`/opt/jetty/temp`这个持久的目录就是应对这种行为的解决方案。
 
-###**配置web应用**
+### **配置web应用**
 
 `/opt/web/mybase`这个文件夹就是`${jetty.base}`，所以让我们配置它来保存你的应用及其配置。
 
@@ -162,7 +162,7 @@ start.ini  webapps/
 jetty.port=80
 ```
 
-###**修改权限**
+### **修改权限**
 
 修改Jetty发布的权限，设置你创建的用户可以访问你的web应用文件夹。
 
@@ -171,7 +171,7 @@ jetty.port=80
 # chown --recursive jetty /opt/web/mybase
 ```
 
-###**配置服务层**
+### **配置服务层**
 
 接下来我们需要新建一个Jetty服务让它在Unix系统中可以和标准的服务一样管理调用。
 
@@ -213,7 +213,7 @@ RUN_CMD        =  /usr/bin/java
        jetty-started.xml
 ```
 
-###**启动你的服务**
+### **启动你的服务**
 
 现在你有一个在`/opt/web/mybase`的`${jetty.base}`和一个在`/opt/jetty/jetty-distribution-9.3.1-SNAPSHOT`的Jetty发布版本，需要启动服务才能让它长时间的成为服务级文件。
 
