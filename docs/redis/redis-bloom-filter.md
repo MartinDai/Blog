@@ -1,5 +1,4 @@
 # 前言
-    
 
 > 最近在研究布隆过滤器（如果不了解什么是布隆过滤器的，推荐看这篇[如何判断一个元素在亿级数据中是否存在？][1]了解），发现Guava提供了封装好的类，但是只能单机使用，一般现在的应用都是部署在分布式系统的，所以想找个可以在分布式系统下使用的布隆过滤器，找了半天只找到一个基于redis开发的模块项目[ReBloom][2]，但是这个是需要额外安装的，而且文档里只说了怎么在docker下运行，没研究过docker所以放弃了。后来找到一篇博客讲怎么利用布隆过滤器统计消息未读数的（博客地址不记得了，是一位淘宝同学写的），博客最后放了一份整合redis和bloomFilter的代码demo，详见[BloomFilter.java][3]，看了下实现比较简单，但是使用方式不是我想要的，所以参考着自己整理了一份。
 
@@ -63,7 +62,7 @@ public class BloomFilterHelper<T> {
 }
 ```
 
-BloomFilterHelper做的事情很简单，其实大部分代码都是来源于Guava库里面的BloomFilterStrategies类，但是因为这个类是专门为Guava的BloomFilter类使用的，所以没有对外暴露一些重要的算法逻辑。
+**BloomFilterHelper**是实现功能的关键，包含了计算bitmap的核心算法，其实大部分代码都是来源于Guava库里面的BloomFilterStrategies类，但是因为这个类是专门为Guava的BloomFilter类使用的，所以没有对外暴露一些重要的算法逻辑。
 
 再来看怎么结合redis一起使用BloomFilterHelper
 
@@ -123,7 +122,7 @@ RedisService很简单，只有两个方法
 
 **includeByBloomFilter**，检查元素是否在redis bloomFilter里面
 
-这里redis的客户端使用的是spring-data-redis封装的，可以在我的项目[SpringMVC-Project][4]中查看完整的使用代码
+这里redis的客户端使用的是spring-data-redis封装的，可以在我的项目[SpringMVC-Project][4]中查看完整的使用代码。
 
 
   [1]: https://crossoverjie.top/2018/11/26/guava/guava-bloom-filter/
