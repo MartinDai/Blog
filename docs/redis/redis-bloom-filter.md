@@ -4,7 +4,7 @@
 
 # BloomFilterHelper
 
-```
+```java
 package com.doodl6.springmvc.service.cache.redis;
 
 import com.google.common.base.Preconditions;
@@ -68,7 +68,7 @@ public class BloomFilterHelper<T> {
 
 # RedisService
 
-```
+```java
 package com.doodl6.springmvc.service.cache.redis;
 
 import com.google.common.base.Preconditions;

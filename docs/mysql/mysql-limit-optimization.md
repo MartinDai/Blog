@@ -1,6 +1,6 @@
 # 低性能版
 
-```
+```sql
 SELECT
 *
 FROM table
@@ -17,7 +17,7 @@ MySQL并不是跳过`offset`行，而是取`offset+N`行，然后返回放弃前
 
 # 优化版本
 
-```
+```sql
 SELECT
 *
 FROM table
@@ -34,7 +34,7 @@ as tmp using(id)
 
 或者
 
-```
+```sql
 SELECT a.* FROM table a, 
 (select id from table
 where condition1 = 0
