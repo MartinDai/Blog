@@ -16,17 +16,42 @@
     window.$docsify = {
         name: 'Martin\'s Blog',
         repo: 'https://github.com/MartinDai/Blog',
-        disqus: 'martindai',
         loadSidebar: true,
         coverpage: true,
         subMaxLevel: 2,
         maxLevel: 4,
-        ga:'UA-134930998-1'
+        ga:'UA-134930998-1',
+        autoHeader: true,
+        search: {
+            paths: 'auto',
+            placeholder: '🔍 搜索 ',
+            noData: '抱歉，没有找到您想要的文章！',
+            // Headline depth, 1 - 6
+            depth: 3
+        },
+        copyCode: {
+            buttonText : '复制代码',
+            errorText  : '复制失败',
+            successText: '复制成功'
+        },
+        pagination: {
+            previousText: '上一篇',
+            nextText: '下一篇',
+        },
     }
 </script>
-<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-<script src="//unpkg.com/docsify/lib/plugins/disqus.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
-<script src="//unpkg.com/docsify/lib/plugins/ga.min.js"></script>
+<script src="//unpkg.com/docsify/lib/docsify.min.js"/>
+<!--代码块复制插件-->
+<script src="//unpkg.com/docsify-copy-code"></script>
+<!--搜索插件-->
+<script src="https://cdn.bootcss.com/docsify/4.5.9/plugins/search.min.js"/>
+<!--语法高亮插件-->
+<script src="//unpkg.com/prismjs/components/prism-java.min.js"/>
+<script src="//unpkg.com/prismjs/components/prism-bash.min.js"/>
+<script src="//unpkg.com/docsify/lib/plugins/ga.min.js"/>
+<!--分页插件-->
+<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"/>
+<!--统计访问量插件-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"/>
 </body>
 </html>
