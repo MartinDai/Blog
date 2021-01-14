@@ -2,9 +2,7 @@
  
   - [Java8 Stream完全使用指南](java/java8-stream.md)
 
-- Redis
-
-  - [基于Redis的BloomFilter实现](redis/redis-bloom-filter.md)
+  - [使用Java结合Redis的bitmap结构实现布隆过滤器](java/redis-bloom-filter.md)
 
 - MySQL
 
