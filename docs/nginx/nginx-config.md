@@ -4,7 +4,7 @@
 
 
 # 完整配置和注释
-```
+```nginx
 user   root owner;
 worker_processes  4;
 
