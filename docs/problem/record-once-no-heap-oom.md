@@ -47,6 +47,7 @@
 
 查看`pmap-sorted.txt`文件，发现有大量的64M内存块
 ![3](https://img.doodl6.com/problem/record-once-no-heap-oom/3.png)
+
 难道是linux glibc 中经典的 64M 内存问题？之前看挖坑的张师傅写过一篇文章（[一次 Java 进程 OOM 的排查分析（glibc 篇）](https://club.perfma.com/article/1709425?last=1714757&type=parent)）讲过这个问题，于是准备参考一下排查思路
 
 尝试设置环境变量MALLOC_ARENA_MAX=1，重启项目，跑了一段时间以后，再次执行`pmap`命令查看内存情况，发现并没有什么变化，看来并不是这个原因，文章后面的步骤就没有什么参考意义了。
