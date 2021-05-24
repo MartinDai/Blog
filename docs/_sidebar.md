@@ -12,6 +12,10 @@
 
   - [Docker学习笔记](docker/docker-learn-note.md)
 
+- 问题处理
+
+  - [记一次堆外内存泄漏排查过程](problem/record-once-no-heap-oom.md)
+
 - Nginx
 
   - [Nginx正向代理和反向代理配置](nginx/nginx-config.md)
