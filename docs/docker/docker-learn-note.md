@@ -17,7 +17,7 @@
 
 查看当前docker版本，可以顺便验证docker是否安装成功且启动好了
 
-![1](https://img.doodl6.com/docker/docker-learn-note/1.png)
+![1](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/docker/docker-learn-note/1.png)
 
 ## 查看帮助
 
@@ -25,11 +25,11 @@
 
 查看docker命令帮助，包含所有支持的操作命令使用规则及简介
 
-![2](https://img.doodl6.com/docker/docker-learn-note/2.png)
+![2](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/docker/docker-learn-note/2.png)
 
 还可以看某个指令的详细帮助,如：`docker images --help`，docker所有命令都可以在最后加上`--help`来查看该命令的使用帮助
 
-![3](https://img.doodl6.com/docker/docker-learn-note/3.png)
+![3](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/docker/docker-learn-note/3.png)
 
 ## 拉取镜像
 
@@ -37,11 +37,11 @@
 
 下载镜像，如果没有指定镜像地址，默认从[官方的hub][3]下载指定的镜像，官方的hub提供了绝大多数热门的组件镜像，可以根据自己的需要进行搜索，这个网站有点类似github的模式，各个官方组件一般都会有比较详细的使用说明，比如Redis
 
-![4](https://img.doodl6.com/docker/docker-learn-note/4.png)
+![4](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/docker/docker-learn-note/4.png)
 
 可以使用`docker pull redis`下载最新版本的redis镜像
 
-![5](https://img.doodl6.com/docker/docker-learn-note/5.png)
+![5](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/docker/docker-learn-note/5.png)
 
 也可以指定下载的版本，如`docker pull redis:5.0.5`就可以下载5.0.5这个版本的镜像
 
@@ -58,7 +58,7 @@
 
 查看当前已下载的镜像列表
 
-![6](https://img.doodl6.com/docker/docker-learn-note/6.png)
+![6](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/docker/docker-learn-note/6.png)
 
 ## 删除镜像
 
