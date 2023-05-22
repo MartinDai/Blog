@@ -30,7 +30,7 @@ Cloudflare 的核心服务包括：CDN（内容分发网络），DDOS 保护，W
 一般情况下需要把镜像文件上传到服务商平台以后才能进行版本管理和部署，或者通过服务商平台关联源码进行镜像打包，不同厂商可能有不同的策略，我这里选择的是在本地打包以后上传到平台的方式。
 
 阿里云需要先在【容器镜像服务】里面开通个人版，然后【创建镜像仓库】以后根据操作指南执行即可
-![1](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/other/serverless-with-cloudflare-support-https/1.png)
+![1](../../resources/images/other/serverless-with-cloudflare-support-https/1.png)
 
 上传完以后可以点击左侧的【镜像版本】查看镜像版本列表
 ![2](https://raw.githubusercontent.com/MartinDai/Blog/master/resources/images/other/serverless-with-cloudflare-support-https/2.png)
