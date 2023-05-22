@@ -20,6 +20,10 @@
 
   - [Nginx正向代理和反向代理配置](nginx/nginx-config.md)
 
+- 其他
+
+  - [Serverless部署应用并使用Cloudflare加速和支持HTTPS](other/serverless-with-cloudflare-support-https.md)
+
 - 翻译
 
   - [[译] Jetty 9 使用 jetty.sh 启动 Unix 服务](translate/start-jetty-9.md)
