@@ -30,35 +30,35 @@ Cloudflare 的核心服务包括：CDN（内容分发网络），DDOS 保护，W
 一般情况下需要把镜像文件上传到服务商平台以后才能进行版本管理和部署，或者通过服务商平台关联源码进行镜像打包，不同厂商可能有不同的策略，我这里选择的是在本地打包以后上传到平台的方式。
 
 阿里云需要先在【容器镜像服务】里面开通个人版，然后【创建镜像仓库】以后根据操作指南执行即可
-![1](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/1.png)
+![1](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/1.png)
 
 上传完以后可以点击左侧的【镜像版本】查看镜像版本列表
-![2](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/2.png)
+![2](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/2.png)
 
 ## 创建云函数
 
 阿里云的云函数是挂在服务下的，所以需要先创建服务，然后再创建函数。
 创建函数的时候选择【使用容器镜像创建】，请求处理程序类型选择【处理 HTTP 请求】，容器镜像泽点击下面的【选择 ACR 中的镜像】找到选择自己上传的仓库版本即可
-![3](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/3.png)
+![3](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/3.png)
 
 后面还有【监听端口】不要忘记配置，接下来就是一些资源和环境变量相关的配置，可以根据自己的需要选择配置
-![4](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/4.png)
+![4](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/4.png)
 
 最后是触发器配置，特别是请求方法记得要把应用内所声明过的类型都配上
-![5](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/5.png)
+![5](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/5.png)
 
 最后点击【创建】即可完成函数的创建
 
 ## 验证云函数
 
 云函数创建成功以后，回到函数列表，点击函数名称即可查看详情
-![6](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/6.png)
+![6](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/6.png)
 
 切换到【测试函数】功能项，通过配置请求方式和路径即可向函数发起请求，如果函数能够如预期内响应，则表示函数已经部署成功
-![7](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/7.png)
+![7](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/7.png)
 
 再切换到【触发器管理（URL）】功能项，可以看到该函数已经拥有了一个外网可以访问的域名，通过该域名也可以验证函数部署是否成功，**需要注意的是，该域名如果通过浏览器访问，这所有结果都会通过下载的方式响应**，这主要是因为国内提供网页服务是需要备案的。
-![8](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/8.png)
+![8](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/8.png)
 
 ## 自定义域名
 
@@ -67,14 +67,14 @@ Cloudflare 的核心服务包括：CDN（内容分发网络），DDOS 保护，W
 ### 使用阿里云已经备案的域名
 
 如果你已经有一个在阿里云备案过的域名，那么可以在【函数计算 FC】功能首页找到【域名管理】功能
-![9](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/9.png)
+![9](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/9.png)
 
 通过点击【添加自定义域名】，进入配置页面
 设置好自定义的域名并在域名解析控制台配置好相应的CNAME
 **HTTPS需要购买证书，或者手动上传（有的话可以选择）**
 **CDN加速是要单独收费的，所以这里选择禁用**
 最后设置路由配置到部署好的服务函数即可
-![10](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/10.png)
+![10](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/10.png)
 
 ### 没有已备案的域名
 
@@ -87,25 +87,25 @@ Cloudflare 的核心服务包括：CDN（内容分发网络），DDOS 保护，W
 前面我们在配置自定义域名的时候就发现**CDN加速**和**HTTPS**这两个都被设计为单独的收费项目了，但是我们可以使用Cloudflare免费使用这两项功能。
 
 登录Cloudflare，选择【添加站点】，输入自己的域名添加
-![11](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/11.png)
+![11](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/11.png)
 
 计划选择最下面的Free
-![12](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/12.png)
+![12](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/12.png)
 
 继续按照步骤，登录到域名的服务商，把对应的DNS服务器改为Cloudflare的DNS服务器地址
 还是以阿里云为例，在域名管理里面的【DNS管理】->【DNS修改】界面选择修改DNS服务器，两个都要改成Cloudflare的
-![13](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/13.png)
+![13](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/13.png)
 
 完成以后在首页能看到添加的域名为有效即为设置成功
-![14](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/14.png)
+![14](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/14.png)
 
 点击域名进入配置页面，选择左侧的【DNS】，把之前配置的云函数的CNAME在这里重新配置一遍
 
-![15](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/15.png)
+![15](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/15.png)
 
 再点击左侧的【SSL/TLS】，勾选【完全】
 
-![16](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/16.png)
+![16](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/16.png)
 
 至此，再次通过自定义域名访问验证，能够通过https访问并正常显示资源即表示成功
-![17](https://gitee.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/17.png)
+![17](https://imgs.doodl6.com/MartinDai/imgs/raw/master/other/serverless-with-cloudflare-support-https/17.png)
