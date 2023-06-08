@@ -13,7 +13,7 @@
 
 首先想到通过Arthas查看内存分布情况，执行dashboard命令，查看内存分布情况
 
-![1](../resources/images/problem/record-once-no-heap-oom/1.png)
+![1](https://gitee.com/MartinDai/imgs/raw/master/problem/record-once-no-heap-oom/1.png)
 
 发现堆和非堆的内存加起来也就2个G不到，但是这里看到的非堆只包含了code_cache和metaspace的部分，那有没有可能是其他非堆的部分有问题呢？
 
@@ -34,7 +34,7 @@
 
 执行`jcmd <pid> VM.native_memory summary scale=MB`
 
-![2](../resources/images/problem/record-once-no-heap-oom/2.png)
+![2](https://gitee.com/MartinDai/imgs/raw/master/problem/record-once-no-heap-oom/2.png)
 
 从图中可以看到堆和非堆的总使用内存（committed）也就2G多，那还有3个G的内存去哪里了呢
 
@@ -46,7 +46,7 @@
 
 查看`pmap-sorted.txt`文件，发现有大量的64M内存块
 
-![3](../resources/images/problem/record-once-no-heap-oom/3.png)
+![3](https://gitee.com/MartinDai/imgs/raw/master/problem/record-once-no-heap-oom/3.png)
 
 难道是linux glibc 中经典的 64M 内存问题？之前看挖坑的张师傅写过一篇文章（[一次 Java 进程 OOM 的排查分析（glibc 篇）](https://club.perfma.com/article/1709425?last=1714757&type=parent)）讲过这个问题，于是准备参考一下排查思路
 
@@ -64,7 +64,7 @@ cat /proc/<pid>/smaps > smaps.txt
 
 查看smaps.txt，找到有问题的内存块地址，比如下图中的 7fb9b0000000-7fb9b3ffe000
 
-![4](../resources/images/problem/record-once-no-heap-oom/4.png)
+![4](https://gitee.com/MartinDai/imgs/raw/master/problem/record-once-no-heap-oom/4.png)
 
 启动gdb
 
@@ -84,7 +84,7 @@ dump memory /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump 0x7fb9b0000000 0x7fb9b3ffe00
 strings -10 /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump
 ```
 
-![5](../resources/images/problem/record-once-no-heap-oom/5.png)
+![5](https://gitee.com/MartinDai/imgs/raw/master/problem/record-once-no-heap-oom/5.png)
 
 发现里面有大量的图中红框中的内容，这个内容是后端给前端websocket推送的内容，怎么会驻留在堆外内存里面呢？检查了项目代码发现，后端的websocket是使用的netty-socketio实现的，maven依赖为
 
@@ -102,7 +102,7 @@ strings -10 /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump
 
 看了下最近的版本发布日志，发现这个框架的最新版本已经是1.7.18，而且中间发布的几个版本多次修复了内存泄漏相关的问题
 
-![6](../resources/images/problem/record-once-no-heap-oom/6.png)
+![6](https://gitee.com/MartinDai/imgs/raw/master/problem/record-once-no-heap-oom/6.png)
 
 于是把依赖版本升级到最新版，重新发布后，第二天在看，发现RES还是变得很高
 
