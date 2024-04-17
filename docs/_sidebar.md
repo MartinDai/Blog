@@ -12,7 +12,7 @@
 
   - [Docker学习笔记](docker/docker-learn-note.md)
   - 
-  - [构建多平台镜像](docker/build-multi-platform-image.md)
+  - [Docker构建多平台镜像](docker/build-multi-platform-image.md)
 
 - 问题处理
 
