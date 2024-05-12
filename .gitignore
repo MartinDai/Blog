@@ -1,3 +1,6 @@
 # IntelliJ IDEA files
 .idea/
 *.iml
+
+public/
+node_modules/
