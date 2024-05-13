@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /js/
+Disallow: /css/
+Disallow: /images/
+Disallow: /cdn-cgi/
+
+Sitemap: https://martin.doodl6.com/sitemap.xml
