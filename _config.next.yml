@@ -791,7 +791,7 @@ growingio_analytics: # <project_id>
 
 # Cloudflare Web Analytics
 # See: https://www.cloudflare.com/web-analytics/
-cloudflare_analytics:
+cloudflare_analytics: 943580471d2e45f69ab82630e1044cc2
 
 # Microsoft Clarity Analytics
 # See: https://clarity.microsoft.com/
