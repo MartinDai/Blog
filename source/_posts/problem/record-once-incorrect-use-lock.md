@@ -71,7 +71,7 @@ jmap -dump:format=b,file=8166.dump 8166
 通过以上命令导出内存dump文件下载到本地，使用VisualVM加载dump文件。
 
 找到`QueueMiddleComponent`对象，发现只有一个实例，其中`writeLock`字段的关键信息如下
-![2](https://imgs.doodl6.com/problem/record-once-incorrect-use-lock/1.webp)
+![1](https://imgs.doodl6.com/problem/record-once-incorrect-use-lock/1.webp)
 
 可以看到这个锁当前被名为`DubboServerHandler-192.168.160.42:9184-thread-93`的线程所持有，于是再从线程栈里面找到这个线程的当前栈信息
 
