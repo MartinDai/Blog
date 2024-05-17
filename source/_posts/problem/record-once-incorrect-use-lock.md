@@ -43,6 +43,8 @@ jstack -l 8166
 ```
 可以看到线程正在申请加锁，找到相关人员确认了这个不是业务代码而是我们自己内部封装的一个框架逻辑，于是找到对应的项目代码拉到本地。
 
+<!--more-->
+
 找到对应的执行代码段
 ```
 final ReentrantLock writeLock = this.writeLock;

@@ -44,6 +44,8 @@ sudo update-alternatives --set javac /usr/java/jdk-13/bin/javac
 ```
 其中`jdk-13`是上一步解压后的文件夹名，根据实际版本做替换
 
+<!--more-->
+
 **验证Java软链**
 
 ```
