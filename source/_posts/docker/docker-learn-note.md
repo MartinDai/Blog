@@ -36,9 +36,9 @@ categories:
 
 还可以看某个指令的详细帮助,如：`docker images --help`，docker所有命令都可以在最后加上`--help`来查看该命令的使用帮助
 
-![3](https://imgs.doodl6.com/docker/docker-learn-note/3.png)
-
 <!--more-->
+
+![3](https://imgs.doodl6.com/docker/docker-learn-note/3.png)
 
 ## 拉取镜像
 

@@ -37,6 +37,9 @@ kubectl get nodes
 
 kubectl describe node
 ```
+
+<!--more-->
+
 ![3.png](https://imgs.doodl6.com/k8s/macos-install-k8s/3.webp)
 
 ## 安装k8s Dashboard
