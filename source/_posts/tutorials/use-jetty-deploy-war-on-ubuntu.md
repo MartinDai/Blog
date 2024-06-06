@@ -9,7 +9,7 @@ categories:
 
 有一台装有Ubuntu系统的服务器和一个可以部署的War包
 
-## 1.安装Java
+## 安装Java
 
 **创建文件夹**
 ```shell
@@ -83,7 +83,7 @@ JAVA_HOME="/usr/java/jdk-13"
 java -version
 ```
 
-## 2.安装Jetty
+## 安装Jetty
 
 进入[https://www.eclipse.org/jetty/download.html](https://www.eclipse.org/jetty/download.html) 复制下载地址
 
@@ -103,7 +103,7 @@ sudo wget https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.
 sudo tar -xvzf jetty-distribution-9.4.21.v20190926.tar.gz
 ```
 
-## 3.上传War包
+## 上传War包
 
 如果有权限可以直接使用rz命令上传
 **进入wabapps文件夹**
@@ -123,7 +123,7 @@ scp ~/project.war username@hostname:/tmp
 sudo mv /tmp/project.war /usr/jetty/jetty-distribution-9.4.21.v20190926/webapps/
 ```
 
-## 4.启动Jetty
+## 启动Jetty
 
 **编辑start.ini**
 ```shell

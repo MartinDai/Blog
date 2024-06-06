@@ -12,13 +12,13 @@ categories:
 
 ----------
 
-# 安装 Docker Desktop
+## 安装 Docker Desktop
 
 参考 [https://www.docker.com/get-started][2]，安装并启动后就可以使用下面的这些命令了
 
-# docker 命令
+## docker 命令
 
-## 查看docker版本
+### 查看docker版本
 
 `docker --version`
 
@@ -26,7 +26,7 @@ categories:
 
 ![1](https://imgs.doodl6.com/docker/docker-learn-note/1.png)
 
-## 查看帮助
+### 查看帮助
 
 `docker --help`
 
@@ -40,7 +40,7 @@ categories:
 
 ![3](https://imgs.doodl6.com/docker/docker-learn-note/3.png)
 
-## 拉取镜像
+### 拉取镜像
 
 `docker pull [OPTIONS] NAME[:TAG|@DIGEST]`
 
@@ -61,7 +61,7 @@ categories:
 { "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn/","https://hub-mirror.c.163.com","https://registry.docker-cn.com"], "insecure-registries": ["10.0.0.12:5000"] }
 ```
 
-## 查看镜像
+### 查看镜像
 
 `docker images`
 
@@ -69,44 +69,44 @@ categories:
 
 ![6](https://imgs.doodl6.com/docker/docker-learn-note/6.png)
 
-## 删除镜像
+### 删除镜像
 
 `docker rmi [OPTIONS] IMAGE [IMAGE...]`
 
 举例：`docker rmi my-image:1.0`，表示删除名为`my-image`，版本号为`1.0`的镜像
 
-## 使用镜像创建容器
+### 使用镜像创建容器
 
 `docker run [OPTIONS] IMAGE [COMMAND] [ARG...]`
 
 使用指定镜像创建一个新的容器并运行，例如我们想创建运行redis容器，则可以使用命令`docker run --name my-redis -p 6379:6379 -d redis`，其中`--name`是`docker run`提供的参数，后面紧跟着的`my-redis`是对应的值，表示启动以后容器的名称，如果不指定则会使用随机生成的一个字符串。`-p 6379:6379`表示把本机端口6379映射到容器的6379端口，`-d`表示后台运行，如果不指定则启动后会自动进入容器控制台，并且退出控制台的同时会关闭容器。
 
-## 容器查看
+### 容器查看
 
 `docker container ls [OPTIONS]`
 
 查看容器，可以通过`docker container ls`查看当前运行的容器，或者通过`docker container ls -a`查看所有创建的容器
 
-## 删除容器
+### 删除容器
 
 `docker container rm [OPTIONS] CONTAINER [CONTAINER...]`
 
 举例：`docker container rm my-container1 my-container2`
 表示同时删除name为`my-container1`和`my-container2`的两个容器
 
-## 启动容器
+### 启动容器
 
 `docker start [OPTIONS] CONTAINER [CONTAINER...]`
 
 举例：`docker start my-container1`表示启动name为`my-container1`的容器
 
-## 容器执行命令
+### 容器执行命令
 
 `docker exec [OPTIONS] CONTAINER COMMAND [ARG...]`
 
 对指定的容器执行命令，我们可以通过执行`docker exec -it my-redis /bin/bash`进入我们刚刚启动的容器
 
-## 复制文件到容器
+### 复制文件到容器
 
 `docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH`
 
@@ -117,7 +117,7 @@ categories:
 `e4cf118af140`为容器ID
 `/var/lib/dev/`为容器目录
 
-## 复制容器文件到本地
+### 复制容器文件到本地
 
 `docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-`
 
@@ -128,13 +128,13 @@ categories:
 `e4cf118af140`为容器ID
 `/var/lib/dev/test.txt`为容器文件路径
 
-## 停止容器
+### 停止容器
 
 `docker stop [OPTIONS] CONTAINER [CONTAINER...]`
 
 停止容器，如果要停止上面启动的redis容器，则可以使用命令`docker stop my-redis`，指定了名字的好处立马就可以体现出来了，我们可以很精准的控制容器，而不需要去查询容器名称
 
-## 修改容器作为新镜像
+### 修改容器作为新镜像
 
 `docker commit [-m] [-a] CONTAINERID REPOSITORY[:TAG]`
 
@@ -147,25 +147,25 @@ categories:
 
 举例：`docker commit -m "add something" -a "Martin Dai" e4cf118af140 my-image:latest`
 
-## 推送镜像到远程
+### 推送镜像到远程
 
 `docker push REPOSITORY[:TAG]`
 
 举例：`docker push my-image:latest`
 
-## 基于容器导出镜像
+### 基于容器导出镜像
 
 `docker export [OPTIONS] CONTAINER`
 
 举例：`docker export -o my-image.tar my-container`，表示name为`my-container`的容器导出到`my-image.tar`文件
 
-## 导入镜像
+### 导入镜像
 
 `docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]`
 
 举例：`docker import my-image.tar my-image:latest`，表示将`my-image.tar`导入为镜像，名为`my-image`，版本号为`latest`
 
-# docker-compose 命令
+## docker-compose 命令
 
 有时候项目依赖的外部环境比较多，但是又不想一个一个启动各个容器怎么办呢，`docker-compose`就是用来解决这个问题的，该命令可以通过使用指定的yml同时启动多个容器。
 
