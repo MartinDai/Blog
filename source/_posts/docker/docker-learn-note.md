@@ -5,7 +5,7 @@ categories:
 - Docker
 ---
 
-## 学习背景 ##
+## 学习背景
 近些年，如果你是一名开发，那么`Docker`这个热门的技术名词你一定听说过，我也不例外，但是因为平时没接触过，所以一直都没动力去了解使用。最近在折腾自己维护在github上的项目的时候，发现项目所依赖的外部环境比较多，比如zookeeper、redis、elasticsearch等等，如果都安装一遍的话比较麻烦，而且因为是自己整理平时积累用的项目，对数据也没什么要求，只要有这样一个环境能保证项目运行起来就行了。第一时间想到的就是利用docker容器，这样自己不但可以顺便学习一下这个热门技术，还可以把搭建成果作为这个项目的一部分让有兴趣研究的项目关注者直接在接触到这个项目的时候可以快速把环境搭建起来，可谓是一举两得。
 
 有兴趣的朋友可以访问项目地址:[https://github.com/MartinDai/SpringBoot-Project][1]
@@ -165,7 +165,6 @@ categories:
 
 举例：`docker import my-image.tar my-image:latest`，表示将`my-image.tar`导入为镜像，名为`my-image`，版本号为`latest`
 
-
 # docker-compose 命令
 
 有时候项目依赖的外部环境比较多，但是又不想一个一个启动各个容器怎么办呢，`docker-compose`就是用来解决这个问题的，该命令可以通过使用指定的yml同时启动多个容器。
@@ -201,8 +200,6 @@ networks:
 进入该文件所在的目录，然后执行`docker-compose up`就可以启动redis和memcached这两个容器，如果要使用其他文件名，则可以使用`-f`参数来指定文件名，如`docker-compose -f docker-compose-cache.yml up`，如果需要后台运行，则可以在最后加上`-d`。
 
 有启动就有停止，如果想要停止`docker-compose up`启动的容器，可以执行`docker-compose down`命令停止所有组合的容器。
-
-
 
 [1]: https://github.com/MartinDai/SpringBoot-Project
 [2]: https://www.docker.com/get-started

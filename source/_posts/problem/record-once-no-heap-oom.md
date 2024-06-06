@@ -30,7 +30,7 @@ categories:
 
 > NMT是Native Memory Tracking的缩写，是Java7U40引入的HotSpot新特性，开启后可以通过jcmd命令来对JVM内存使用情况进行跟踪。注意，根据Java官方文档，开启NMT会有5%－10%的性能损耗。
 
-```
+```text
 -XX:NativeMemoryTracking=[off | summary | detail]  
 # off: 默认关闭 
 # summary: 只统计各个分类的内存使用情况.
@@ -67,7 +67,7 @@ categories:
 
 要执行gdb的dump需要先知道一个地址范围，通过smaps可以输出进程使用的内存块详细信息，包括地址范围和来源
 
-```
+```shell
 cat /proc/<pid>/smaps > smaps.txt
 ```
 
@@ -77,19 +77,19 @@ cat /proc/<pid>/smaps > smaps.txt
 
 启动gdb
 
-```
+```shell
 gdb attach <pid>
 ```
 
 dump指定内存地址到指定的目录下，参数的地址需要在smaps拿到地址前加上0x
 
-``` 
+``` shell
 dump memory /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump 0x7fb9b0000000 0x7fb9b3ffe000
 ```
 
 显示长度超过10字符的字符串
 
-```
+```shell
 strings -10 /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump
 ```
 
@@ -97,7 +97,7 @@ strings -10 /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump
 
 发现里面有大量的图中红框中的内容，这个内容是后端给前端websocket推送的内容，怎么会驻留在堆外内存里面呢？检查了项目代码发现，后端的websocket是使用的netty-socketio实现的，maven依赖为
 
-```
+```xml
 <dependency>
  <groupId>com.corundumstudio.socketio</groupId>
  <artifactId>netty-socketio</artifactId>
